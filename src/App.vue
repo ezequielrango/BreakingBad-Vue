@@ -1,9 +1,10 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
   <div class="wrapper">
-    <h1>hola</h1>
+    <h1>App</h1>
   </div>
 </template>
 
