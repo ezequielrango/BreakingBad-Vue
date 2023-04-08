@@ -14,7 +14,6 @@ const routeLinks: RouterLink[] = characterRoute.children!
         }
     });
 
-console.log(characterRoute.children);
 
 </script>
 <template>
@@ -22,6 +21,9 @@ console.log(characterRoute.children);
 
 
     <NavBar :show-icon="false" :links="routeLinks" />
-    <RouterView />
+
+    <Suspense>
+        <RouterView />
+    </Suspense>
 </template>
 <style scoped></style>
