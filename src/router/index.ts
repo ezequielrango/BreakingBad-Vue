@@ -17,12 +17,12 @@ const router = createRouter({
         //     ...characterRoute,
         //     path: '/characters'
         // },
-        // characterRoutsse,
-        // { 
-        //     path: '/characters', 
-        //     name: 'characters', 
-        //     component: () => import('@/characters/layout/CharacterLayout.vue') 
-        // },
+        
+        { 
+            path: '/characters', 
+            name: 'characters', 
+            component: () => import('@/characters/layout/CharacterLayout.vue') 
+        },
 
         // Default
         { path: '/:pathMatch(.*)*', redirect: () => ({ name: 'home' }) }
