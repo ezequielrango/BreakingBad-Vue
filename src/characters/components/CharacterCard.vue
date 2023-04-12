@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { toRef } from "vue";
-import type { Character } from "../interfaces/Character";
+import type { Character, Result } from "../interfaces/Character";
 
 
-const props = defineProps<{character: Character}>();
+const props = defineProps<{character: Result}>();
 const character = toRef(props, 'character');
 </script>
 <template>

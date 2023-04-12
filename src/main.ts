@@ -6,8 +6,12 @@ import './assets/main.css';
 
 const app = createApp(App)
 
+//store
+
+
 //maneja la cache por nosotros
-.use(VueQueryPlugin)
+app.use(VueQueryPlugin)
+import '@/store/characters.store'
 
 VueQueryPlugin.install( app, {
     queryClientConfig: {
