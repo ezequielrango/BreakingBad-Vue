@@ -3,17 +3,26 @@ import CardList from "../components/CardList.vue";
 import { useQuery } from '@tanstack/vue-query';
 import rickAndMortyApi from '@/api/rickAndMortyApi';
 import type { Character,Result } from '@/characters/interfaces/Character';
-import type characterStore from "@/store/characters.store";
+import characterStore from "@/store/characters.store";
 
 const props = defineProps<{title: string, visible: boolean}>()
 
+const getCharacters = async(): Promise<Result[]> => {
+        const {data} = await rickAndMortyApi.get<Result[]>('/character');
+        const dataMod = data.results
+        return dataMod
+}
 
 
-
-// const {isLoading, data: characterResp} = useQuery(
-//         ['characters'],
-//         () => rickAndMortyApi.get<Result[]>("/character")
-// )
+const {isLoading, dataMod} = useQuery(
+        ['characters'],
+        getCharacters,
+        {
+                onSuccess( dataMod ){
+                        characterStore.loadedCharacters(dataMod)
+                }
+        }
+)
 </script>
 <template>
         <h1 v-if="characterStore.characters.isLoading">Loading...</h1>
