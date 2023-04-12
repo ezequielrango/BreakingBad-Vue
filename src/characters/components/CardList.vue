@@ -5,6 +5,11 @@ import rickAndMortyApi from '@/api/rickAndMortyApi';
 import type { Character,Result } from '@/characters/interfaces/Character';
 import CharacterCard from '@/characters/components/CharacterCard.vue';
 
+interface Props {
+    characters: Result[]
+}
+
+const props = defineProps<Props>();
 
 // composable functions
 // const {characters, isLoading,loadCharacters,hasError,errorMessage} = useCharacters()
@@ -16,24 +21,22 @@ const getCharactersSlow = async (): Promise<Character[]> => {
 
     
   const { data } = await rickAndMortyApi.get<Character[]>("/character");
-  console.log(data.results);
   return data.results;
 };
 
 const {isLoading, isError,data : characters ,error} = useQuery(
     ['characters'],
     getCharactersSlow,
-    {
-        cacheTime: 1000 * 60,
-        refetchOnReconnect: 'always'
-    }
+    // {
+    //     cacheTime: 1000 * 60,
+    //     refetchOnReconnect: 'always'
+    // }
 );
 
 // loadCharacters()
 </script>
 
 <template>
-    <h1 v-if="isLoading">Loading...</h1>
     <div class="card-list">
         <CharacterCard 
             v-for="character of characters"
