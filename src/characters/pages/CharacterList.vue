@@ -32,6 +32,10 @@ const getCharactersCacheFirst = async(): Promise<Result[]> => {
 <template>
         <h1 v-if="characterStore.characters.isLoading">Loading...</h1>
 
+        <div v-else-if="characterStore.characters.hasError">
+                <h1>Error al cargar</h1>
+                <p> {{ characterStore.characters.errorMessage }}</p>
+        </div>
         <template v-else>
                 <h1>{{ props.title }}</h1>
                 <CardList :characters="characterStore.characters.list"/> 

@@ -47,10 +47,16 @@ const characterStore = reactive<Store>({
         }
     },
     loadedCharactersFailed(error: string) {
-
+        this.characters = {
+            count: 0,
+            errorMessage: error,
+            hasError: true,
+            isLoading: false,
+            list: []
+        }
     }
 });
 
-characterStore.startLoadingCharacters();
+// characterStore.startLoadingCharacters();
 
 export default characterStore;
